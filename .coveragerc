@@ -1,0 +1,3 @@
+[run]
+include = cool/*
+omit = *tests*, *docs*
