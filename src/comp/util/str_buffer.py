@@ -43,7 +43,7 @@ class StringManager(BufferManager):
     '''
     Get humans readable name for this buffer
     '''
-    return "<stdin>"
+    return "stdin"
 
   def __enter__(self):
     '''

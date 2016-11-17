@@ -1,11 +1,11 @@
 from enum import Enum
 
-from cool.util.io_base import Location
+from comp.util.io_base import Location
 
 
 class Type(Enum):
   '''
-  (Type , ID) pairs of all language categories.
+  (Type , Value) pairs of all language categories.
   '''
   # Keywords
   KW_DEF = 'def'
@@ -35,6 +35,7 @@ class Type(Enum):
   INTEGER = False
   FLOAT = False
   IDENT = False
+  FUNC_IDENT = False
 
 
 class Token:
@@ -49,8 +50,8 @@ class Token:
 
   def __str__(self) -> str:
     val = self.typ.value or self.val
-    if self.type == Type.ERROR:
+    if self.typ == Type.ERROR:
       val = self.val
 
     typ = self.typ.name
-    return "Token ({0}) {{1}} => {val}".format(typ, loc, val)
+    return "Token ({0}) {1} => {2}".format(typ, self.loc, val)

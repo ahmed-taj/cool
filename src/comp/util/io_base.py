@@ -16,7 +16,7 @@ class Location:
     self.col = col
 
   def __str__(self):
-    return "{} ({}:{})".format(self.buffer, self.line, self.col)
+    return "<{}> ({}:{})".format(self.buffer, self.line, self.col)
 
 
 class BufferManager(metaclass=ABCMeta):
@@ -103,10 +103,6 @@ class BufferManager(metaclass=ABCMeta):
     return buf, loc
 
   def _calc_loc(self, ch: str):
-    # EOF ?
-    if ch == "":
-      return
-
     # We hit end of line?
     if ch == '\n':
       # store matrix info (line number, width)
