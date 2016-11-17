@@ -7,7 +7,7 @@ ENCODING = 'UTF-8'
 class Location:
   """
   Used to store source buffer position information such as line number,
-  file name, and colum number.
+  file name, and column number.
   """
 
   def __init__(self, buffer, line, col):
@@ -46,7 +46,7 @@ class BufferManager(metaclass=ABCMeta):
     # How many chars do we have to read
     self.length = self._get_length()
 
-    # Attributes needed to calcuate location
+    # Attributes needed to calculate location
     self._line = 1
     self._col = 1
     self._lines_widths = {}
@@ -60,7 +60,7 @@ class BufferManager(metaclass=ABCMeta):
     # Consume the next available encoded
     ch = self[self.pos]
 
-    # Calculate Location
+    # Calculate location
     self._calc_loc(ch)
 
     self.pos += self.width
@@ -168,12 +168,12 @@ class BufferManager(metaclass=ABCMeta):
 
   def __enter__(self):
     '''
-    Serves as entry point when using with-statment.
+    Serves as entry point when using with-statement.
     '''
     raise NotImplementedError
 
   def __exit__(self, type, val, traceback):
     '''
-    Serves as exit point when using with-statment.
+    Serves as exit point when using with-statement.
     '''
     raise NotImplementedError
