@@ -4,6 +4,7 @@ import string
 
 OCT_DIGITS = set(string.octdigits)
 HEX_DIGITS = set(string.hexdigits)
+WHITE_SPACES = set(' \t\r\x0b\x0c')  # Notice no '\n'
 
 BIN_CHARS = 'bB'
 OCT_CHARS = 'oO'
@@ -40,3 +41,7 @@ def oct_digit(ch: str):
 
 def hex_digit(ch: str):
   return ch in HEX_DIGITS
+
+
+def whitespace(ch: str):
+  return ch in WHITE_SPACES

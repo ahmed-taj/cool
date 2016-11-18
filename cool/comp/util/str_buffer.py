@@ -1,7 +1,7 @@
 from .io_base import BufferManager, ENCODING
 
 
-class StringManager(BufferManager):
+class StringBuffer(BufferManager):
   def _prepare_buffer(self):
     # Anything need to be done before start reading from this buffer
     pass

@@ -1,7 +1,7 @@
-from .str_buffer import StringManager, ENCODING
+from .str_buffer import StringBuffer, ENCODING
 
 
-class FileManager(StringManager):
+class FileBuffer(StringBuffer):
   def _prepare_buffer(self):
     # Anything need to be done before start reading from this buffer
     f = open(self._buffer, "r", encoding=ENCODING)
