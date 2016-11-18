@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from typing import Tuple
 
-ENCODING = 'UTF-8'
+ENCODING = 'UTF-8-sig'
 
 
 class Location:
@@ -83,7 +83,7 @@ class BufferManager(metaclass=ABCMeta):
 
   def ignore(self):
     '''
-    Skip the current part of the buffer.
+    Skips the current part of the buffer.
     '''
     self.start = self.pos
     self.start_ln = self._line
@@ -91,7 +91,7 @@ class BufferManager(metaclass=ABCMeta):
 
   def emit(self) -> Tuple[str, Location]:
     '''
-    Emit the current scanned part of the buffer and it's start Location
+    Emits the current scanned part of the buffer and it's start Location
     '''
     # get current scanned buffer
     buf = self[self.start:self.pos]
@@ -101,6 +101,12 @@ class BufferManager(metaclass=ABCMeta):
     self.ignore()
 
     return buf, loc
+
+  def get_text(self) -> str:
+    '''
+    Returns the current scanned text of the buffer.
+    '''
+    return self[self.start:self.pos]
 
   def _calc_loc(self, ch: str):
     # We hit end of line?
@@ -128,7 +134,7 @@ class BufferManager(metaclass=ABCMeta):
   @abstractmethod
   def __getitem__(self, key) -> str:
     '''
-    Get the character at the given `key` (i.e. index or slice).
+    Gets the character at the given `key` (i.e. index or slice).
     It should return empty string if EOF is reached.
 
     :param key: specify the key of char in the buffer.
@@ -140,7 +146,7 @@ class BufferManager(metaclass=ABCMeta):
   @abstractmethod
   def get_line(self, lineno: int) -> str:
     '''
-    Get a line at the given `lineno`. It should return empty
+    Gets a line at the given `lineno`. It should return empty
     string if invalid `lineno` was given.
 
     :param lineno: the target line number.
@@ -151,14 +157,14 @@ class BufferManager(metaclass=ABCMeta):
   @abstractmethod
   def _get_length(self) -> int:
     '''
-    Get the length of this buffer
+    Gets the length of this buffer
     '''
     raise NotImplementedError
 
   @abstractmethod
   def _get_name(self) -> str:
     '''
-    Get humans readable name for this buffer
+    Gets humans readable name for this buffer
     '''
     raise NotImplementedError
 

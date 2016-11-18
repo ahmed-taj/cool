@@ -14,7 +14,7 @@ class Type(Enum):
   KW_RETURN = 'return'
 
   # Operators and delimiters
-  AND = '+'
+  ADD = '+'
   SUB = '-'
   MUL = '*'
   DIV = '/'
@@ -53,7 +53,7 @@ class Token:
   def __str__(self) -> str:
     val = self.val
     typ = self.typ.name
-    fmt = "Token ({0}) {1} "
+    fmt = "Token ( {0} ) {1} "
 
     # Don't print EOF or NEWLINE values
     if self.typ != Type.EOF and self.typ != Type.NEWLINE:
