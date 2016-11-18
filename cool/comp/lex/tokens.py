@@ -1,8 +1,9 @@
-from enum import Enum
+from enum import Enum, unique
 
 from comp.util.io_base import Location
 
 
+@unique
 class Type(Enum):
   '''
   (Type , Value) pairs of all language categories.
@@ -31,11 +32,12 @@ class Type(Enum):
 
   # Specials
   EOF = 'EOF'
-  ERROR = False
-  INTEGER = False
-  FLOAT = False
-  IDENT = False
-  FUNC_IDENT = False
+  NEWLINE = 'NEWLINE'
+  INTEGER = 1
+  FLOAT = 2
+  IDENT = 3
+  FUNC_IDENT = 4
+  ERROR = 5
 
 
 class Token:
@@ -49,9 +51,12 @@ class Token:
     self.loc = loc
 
   def __str__(self) -> str:
-    val = self.typ.value or self.val
-    if self.typ == Type.ERROR:
-      val = self.val
-
+    val = self.val
     typ = self.typ.name
-    return "Token ({0}) {1} => {2}".format(typ, self.loc, val)
+    fmt = "Token ({0}) {1} "
+
+    # Don't print EOF or NEWLINE values
+    if self.typ != Type.EOF and self.typ != Type.NEWLINE:
+      fmt += "=> {}".format(val)
+
+    return fmt.format(typ, self.loc)
