@@ -2,7 +2,7 @@ import string
 from expects import *
 import comp.util._is as _is
 
-with description("util/is helper"):
+with description("util/_is helper"):
   with it("checks for binary digits"):
     expect(_is.bin_digit('0')).to(equal(True))
     expect(_is.bin_digit('1')).to(equal(True))

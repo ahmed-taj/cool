@@ -1,43 +1,43 @@
-from enum import Enum, unique
+from enum import unique, IntEnum
 
 from comp.util.io_base import Location
 
 
 @unique
-class Type(Enum):
+class Type(IntEnum):
   '''
   (Type , Value) pairs of all language categories.
   '''
   # Keywords
-  KW_DEF = 'def'
-  KW_END = 'end'
-  KW_RETURN = 'return'
+  KW_DEF = 1  # 'def'
+  KW_END = 2  # 'end'
+  KW_RETURN = 3  # 'return'
 
   # Operators and delimiters
-  ADD = '+'
-  SUB = '-'
-  MUL = '*'
-  DIV = '/'
-  MOD = '%'
+  ADD = 100  # '+'
+  SUB = 101  # '-'
+  MUL = 102  # '*'
+  DIV = 103  # '/'
+  MOD = 104  # '%'
 
-  COMMA = ','
-  DOT = '.'
+  COMMA = 200  # ','
+  DOT = 201  # '.'
 
-  L_BRACE = '{'
-  R_BRACE = '}'
-  L_BRACK = '['
-  R_BRACK = ']'
-  L_PAREN = '('
-  R_PAREN = ')'
+  L_BRACE = 300  # '{'
+  R_BRACE = 301  # '}'
+  L_BRACK = 302  # '['
+  R_BRACK = 303  # ']'
+  L_PAREN = 304  # '('
+  R_PAREN = 305  # ')'
 
   # Specials
-  EOF = 'EOF'
-  NEWLINE = 'NEWLINE'
-  INTEGER = 1
-  FLOAT = 2
-  IDENT = 3
-  FUNC_IDENT = 4
-  ERROR = 5
+  EOF = 1000
+  NEWLINE = 1001
+  INTEGER = 1002
+  FLOAT = 1003
+  IDENT = 1004
+  FUNC_IDENT = 1005
+  ERROR = 1006
 
 
 class Token:
@@ -45,10 +45,10 @@ class Token:
   Holds specific token details
   '''
 
-  def __init__(self, typ: Type, loc: Location, val: str=None):
+  def __init__(self, typ: Type, loc: Location, val: str):
     self.typ = typ
-    self.val = val
     self.loc = loc
+    self.val = val
 
   def __str__(self) -> str:
     val = self.val
