@@ -1,6 +1,10 @@
+[![Build Status](https://travis-ci.org/cool-lang/cool.svg?branch=master)](https://travis-ci.org/cool-lang/cool)
+
+> Project status: Pre-Alpha
+
 # Cool
 
-Cool (code name) is a programming language, that is it for now.
+Cool (code name) is a prototype for a programming language, that is it for now.
 
 ### Contribution
 

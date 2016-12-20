@@ -1,8 +1,9 @@
 llvmlite>=0.14.0
 
 # testing
-pytest
-pytest-cov
+mamba>=0.8.6
+expects>=0.8.0
+coverage>=4.2
 
 # docs
 sphinx
