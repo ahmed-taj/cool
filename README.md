@@ -4,7 +4,7 @@
 
 # Cool
 
-Cool (code name) is a prototype for a programming language, that is it for now.
+Cool (code name) is a prototype for a programming language, that all I know for now :)
 
 ### Contribution
 
